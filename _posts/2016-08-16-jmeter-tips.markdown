@@ -5,7 +5,7 @@ tags: jmeter distribution remote performance
 categories: test
 ---
 jmeter distribution test require controlling client and remote server be in the same subnet network.
-```
+{% highlight shell %}
 export RMI_HOST_DEF=-Djava.rmi.server.hostname=192.168.148.72
 
 export RMI_HOST_DEF=-Djava.rmi.server.hostname=192.168.148.75
@@ -13,10 +13,10 @@ export RMI_HOST_DEF=-Djava.rmi.server.hostname=192.168.148.75
 nohup jmeter-server > /dev/null &
 
 jmeter -n -R192.168.148.72,192.168.148.75 -t tc001.jmx -l tc001_log.jtl
-```
+{% endhighlight %}
 
 make sure the time is synced, or it lead to report error!
-```
+{% highlight shell %}
 ntpdate -vd server
 date -R
-```
+{% endhighlight %}
