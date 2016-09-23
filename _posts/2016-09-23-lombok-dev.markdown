@@ -9,6 +9,7 @@ Java自从1.5开始引入了Annotation，这赋予了Java语言新的活力，�
 某种程度上，其中最值得关注的当属[Lombok](https://projectlombok.org/)了, 从编码角度精简了程序，消除了许多无聊的代码（比如@Setter会自动生成Field的setter方法）；另一方面，最近在研究Mock数据的主题，以Annotation的方式实现是比较容易想到的途径之一, 这样可以最小化最开发人员的影响，Mock通过配置文件的方式来实现，只需要在需要Mock的地方打个Annotation就足够了。
 
 先看看Javac的处理流程
+
 ![编译流程](/images/javac-flow.png)
 
 原则上我们不能修改源代码Parse后的AST（抽象语法树），但是Javac可以使用未公开的API来实现这个步骤，许多IDE也都是利用了这一点，比如Eclipse，下面是它检查到错误，给出错误提示，然后根据用户选择的解决方法后修改AST，然后再同步成源代码的过程
@@ -228,7 +229,6 @@ public class TestMock {
     }
 
     public void testMock() {
-        System.out.println(person);
         Car car = new Car();
         car.setBrand("XXX");
         car.setModel("C200");
